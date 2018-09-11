@@ -3,18 +3,20 @@ package com.kang.mvpdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.kang.base.BaseActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements IView {
+public class LoginActivity extends BaseActivity implements IView {
 
     @BindView(R.id.username)
     EditText mUsername;
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements IView {
     @Override
     public void loginResult(boolean isSuccessful) {
         if (isSuccessful) {
-            startActivity(new Intent(this, HomeActivity.class));
+            ARouter.getInstance().build("/app/HomeActivity").navigation();
         } else {
             Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
         }
