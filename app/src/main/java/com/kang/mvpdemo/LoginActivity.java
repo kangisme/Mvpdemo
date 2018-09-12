@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.kang.base.BaseActivity;
+import com.kang.base.Routers;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +60,7 @@ public class LoginActivity extends BaseActivity implements IView {
     @Override
     public void loginResult(boolean isSuccessful) {
         if (isSuccessful) {
-            ARouter.getInstance().build("/app/HomeActivity").navigation();
+            ARouter.getInstance().build(Routers.APP_MAIN).navigation();
         } else {
             Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
         }

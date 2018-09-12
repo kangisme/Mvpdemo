@@ -1,18 +1,17 @@
-if (isNeedUser.toBoolean()) {
+if (isNeedHome.toBoolean()) {
     apply plugin: 'com.android.library'
     apply plugin: 'com.jakewharton.butterknife'
 } else {
     apply plugin: 'com.android.application'
 }
-
 android {
     compileSdkVersion 27
 
 
 
     defaultConfig {
-        if (!isNeedUser.toBoolean()) {
-            applicationId "com.kang.user"
+        if (!isNeedHome.toBoolean()) {
+            applicationId "com.kang.home"
         }
         minSdkVersion 21
         targetSdkVersion 27

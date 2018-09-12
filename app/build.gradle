@@ -9,6 +9,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 只打包arm版本的so文件
+        ndk {
+            abiFilters 'armeabi'
+        }
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -26,6 +30,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':base')
+    if (isNeedHome.toBoolean()) {
+        implementation project(':home')
+    }
+    if (isNeedUser.toBoolean()) {
+        implementation project(':user')
+    }
     implementation 'com.alibaba:arouter-api:1.4.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.0'
     implementation rootProject.ext.logger
